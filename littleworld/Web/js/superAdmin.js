@@ -11,7 +11,16 @@ function initEvents() {
     tabs();
     //当文本获得焦点或者失去焦点时，显示和隐藏提示部分
     showHideDes();
+    //点击取消按钮，所有文本框置空
+    setNullbtn2();
 }
+//点击取消按钮，所有文本框置空
+function setNullbtn2(){
+    $(".addBtn2").click(function () {
+        $("[type='text']").attr("Text", "");
+    });
+}
+
 function showHideDes() {
     $(".addDiv input").focus(function () {
         $(this).next("span").css("display", "block");

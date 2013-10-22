@@ -57,12 +57,12 @@ namespace littleworld.Web
             this.adminPwdAgain.Text = "";
         }
 
-        protected void cancelBtn_Click(object sender, EventArgs e)
-        {
-            this.adminName.Text = "";
-            this.adminPwd.Text = "";
-            this.adminPwdAgain.Text = "";
-        }
+        //protected void cancelBtn_Click(object sender, EventArgs e)
+        //{
+        //    this.adminName.Text = "";
+        //    this.adminPwd.Text = "";
+        //    this.adminPwdAgain.Text = "";
+        //}
 
         protected void gvAdminAll_RowDataBound(object sender, GridViewRowEventArgs e)
         {

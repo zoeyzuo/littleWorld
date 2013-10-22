@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>LittleWorld_superAdmin</title>
+    <title>超级管理员</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content=""/>
 	<meta name="description" content=""/>
@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="js/Jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script type="text/javascript" src="js/superAdmin.js"></script>
+    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -41,13 +42,26 @@
 					</div>
                     <div class="mainCContentTb">
                         <asp:GridView runat="server" ID="gvAdminAll" CssClass="gvAdmin" AutoGenerateColumns="False" 
-                            onrowdatabound="gvAdminAll_RowDataBound" BorderColor="#ccc">
+                            onrowdatabound="gvAdminAll_RowDataBound" BorderColor="#000CCC">
                             <Columns>
-                                <asp:BoundField DataField="adminName" HeaderText="账号" HeaderStyle-CssClass="gvAdminAllHeader" />
-                                <asp:BoundField DataField="adminPwd" HeaderText="密码" HeaderStyle-CssClass="gvAdminAllHeader"/>
-                                <asp:BoundField DataField="adminLevel" HeaderText="权限" HeaderStyle-CssClass="gvAdminAllHeader"/>
-                                <asp:BoundField HeaderText="修改" HeaderStyle-CssClass="gvAdminAllHeader"/>
-                                <asp:BoundField HeaderText="删除" HeaderStyle-CssClass="gvAdminAllHeader"/>
+                                <asp:BoundField HeaderText="ID" HeaderStyle-CssClass="gvAdminAllHeader" 
+                                    DataField="adminID">
+<HeaderStyle CssClass="gvAdminAllHeader"></HeaderStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="adminName" HeaderText="账号" 
+                                    HeaderStyle-CssClass="gvAdminAllHeader" >
+<HeaderStyle CssClass="gvAdminAllHeader"></HeaderStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="adminPwd" HeaderText="密码" 
+                                    HeaderStyle-CssClass="gvAdminAllHeader">
+<HeaderStyle CssClass="gvAdminAllHeader"></HeaderStyle>
+                                </asp:BoundField>
+                                <asp:BoundField DataField="adminLevel" HeaderText="权限" 
+                                    HeaderStyle-CssClass="gvAdminAllHeader">
+<HeaderStyle CssClass="gvAdminAllHeader"></HeaderStyle>
+                                </asp:BoundField>
+                                <asp:CommandField HeaderText="编辑" ShowEditButton="True" HeaderStyle-CssClass="gvAdminAllHeader" />
+                                <asp:CommandField HeaderText="删除" ShowDeleteButton="True"  HeaderStyle-CssClass="gvAdminAllHeader"/>
                             </Columns>
                     
                         </asp:GridView>
@@ -98,7 +112,7 @@
 					    <li>
 						    <label>密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
 						    <div class="addDiv">
-                                <asp:TextBox type="text" runat="server" ID="adminPwd" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox type="text" runat="server" ID="adminPwd" TextMode="Password" ></asp:TextBox>
                                 <%--<asp:TextBox type="text" runat="server" ID="adminPwd" TextMode="Password"></asp:TextBox>--%>
 							    <span>6-16位字符，可用数字、字母或符号组合！</span>
 						    </div>
@@ -115,9 +129,9 @@
 					    <li>
                             <asp:Button ID="addBtn" runat="server"  Text="添加" class="addBtn" 
                                 onclick="addBtn_Click"/>
-
-                            <asp:Button ID="cancelBtn" runat="server"  Text="取消" class="addBtn addBtn2" 
-                                onclick="cancelBtn_Click"/>
+                            <button class="addBtn addBtn2">取消</button>
+                           <%-- <asp:Button ID="cancelBtn" runat="server"  Text="取消" class="addBtn addBtn2" 
+                                />--%>
                         </li>
 				    </ul>
                  <%--   </ContentTemplate>
