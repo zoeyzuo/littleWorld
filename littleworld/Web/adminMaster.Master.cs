@@ -11,7 +11,8 @@ namespace littleworld.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //string adminN = Session["no"].ToString();
+            //this.adminNamel.Text = adminN;
         }
     }
 }

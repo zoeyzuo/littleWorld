@@ -142,6 +142,7 @@
     <Content Include="js\superAddAdmin.js" />
     <Content Include="js\superAdmin.js" />
     <Content Include="js\superAdministration.js" />
+    <Content Include="js\superModifyAdminInfo.js" />
     <Content Include="js\superSeeAdminInfo.js" />
     <Content Include="js\userComment.js" />
     <Content Include="js\userFindPwd.js" />
@@ -159,6 +160,7 @@
     <Content Include="js\userSupport.js" />
     <Content Include="superAddAdmin.aspx" />
     <Content Include="superAdmin.aspx" />
+    <Content Include="superModifyAdminInfo.aspx" />
     <Content Include="superSeeAdminInfo.aspx" />
     <Content Include="userComment.aspx" />
     <Content Include="userFindPwd.aspx" />
@@ -279,6 +281,13 @@
     </Compile>
     <Compile Include="superAdmin.Master.designer.cs">
       <DependentUpon>superAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="superModifyAdminInfo.aspx.cs">
+      <DependentUpon>superModifyAdminInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="superModifyAdminInfo.aspx.designer.cs">
+      <DependentUpon>superModifyAdminInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="superSeeAdminInfo.aspx.cs">
       <DependentUpon>superSeeAdminInfo.aspx</DependentUpon>

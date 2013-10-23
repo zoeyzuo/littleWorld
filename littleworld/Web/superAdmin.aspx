@@ -37,6 +37,7 @@
 					<div class="searchs">
 						<div class="searchsL">
 							<input id="tags" />
+                            <asp:Button runat="server" Text="搜索" CssClass="searchButton" />
 							<button>搜索</button>
 						</div>
 					</div>

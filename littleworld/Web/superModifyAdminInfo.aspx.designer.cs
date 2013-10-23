@@ -10,42 +10,60 @@
 namespace littleworld.Web {
     
     
-    public partial class adminLogin {
+    public partial class superModifyAdminInfo {
         
         /// <summary>
-        /// form1 控件。
+        /// adminIDM 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox adminIDM;
         
         /// <summary>
-        /// txtQ 控件。
+        /// adminName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQ;
+        protected global::System.Web.UI.WebControls.TextBox adminName;
         
         /// <summary>
-        /// pwdQ 控件。
+        /// adminPwd 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pwdQ;
+        protected global::System.Web.UI.WebControls.TextBox adminPwd;
         
         /// <summary>
-        /// btnOK 控件。
+        /// adminPwdAgain 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOK;
+        protected global::System.Web.UI.WebControls.TextBox adminPwdAgain;
+        
+        /// <summary>
+        /// addBtn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addBtn;
+        
+        /// <summary>
+        /// cancelBtn 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelBtn;
     }
 }

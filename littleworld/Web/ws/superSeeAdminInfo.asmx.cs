@@ -31,7 +31,7 @@ namespace littleworld.Web.ws
             }
             catch (Exception)
             {
-                
+                throw;
             }
            
         }
