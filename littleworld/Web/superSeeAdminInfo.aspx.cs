@@ -11,21 +11,23 @@ namespace littleworld.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //showAdmins();
             if (Request.QueryString["pageInd"] == null)
             {
-                return;
+                bindData(0, "adminLevel=1");
             }
-            int pageInde = Convert.ToInt32(Request.QueryString["pageInd"]);
-            bindData(0);
+            else 
+            {
+                int pageInde = Convert.ToInt32(Request.QueryString["pageInd"]);
+                bindData(pageInde, "adminLevel=1");
+            }    
         }
-        public void bindData(int pageIn) 
+        public void bindData(int pageIn,string selectWhere) 
         {
             BLL.adminTb bllAdmin = new BLL.adminTb();
-            List<Model.adminTb> admins = bllAdmin.GetModelList("1=1");
+            List<Model.adminTb> admins = bllAdmin.GetModelList(selectWhere);
             PagedDataSource pds = new PagedDataSource();
             pds.DataSource = admins;
-            pds.PageSize = 2;
+            pds.PageSize =6;
             pds.AllowPaging = true;
             pds.CurrentPageIndex = pageIn;
             this.gvSuperAdminSeeInfo.DataSource = pds;
@@ -36,18 +38,20 @@ namespace littleworld.Web
             html.Append("<a class='pageA pageStart' href='superSeeAdminInfo.aspx?pageInd=0'>首页</a>");
             for (int i = 0; i < pageCount; i++)
             {
-                html.Append("<a class='pageA pageNum' href='superSeeAdminInfo.aspx?pageInd="+i.ToString()+"'>"+(i+1).ToString()+"</a>");
+                html.Append("<a class='pageA pageNum pageA"+(i+1).ToString()+"' href='superSeeAdminInfo.aspx?pageInd=" + i.ToString() + "'>" + (i + 1).ToString() + "</a>");
             }
-            html.Append("<a class='pageA pageStart' href='superSeeAdminInfo.aspx?pageInd="+ (pageCount-1).ToString()+"'>尾页</a>");
-            this.dgvpage.InnerHtml=html.ToString();
+            html.Append("<a class='pageA pageStart' href='superSeeAdminInfo.aspx?pageInd=" + (pageCount - 1).ToString() + "'>尾页</a>");
+            this.dgvpage.InnerHtml = html.ToString();
+            ScriptManager.RegisterStartupScript(searchBtn, this.GetType(), "clickPage", "clickPage("+(pageIn+1).ToString()+");", true);
+                
         }
-        public void showAdmins()
-        {
-            BLL.adminTb bllAdmin = new BLL.adminTb();
-            List<Model.adminTb> admins = bllAdmin.GetModelList("adminLevel=1");
-            this.gvSuperAdminSeeInfo.DataSource = admins;
-            this.gvSuperAdminSeeInfo.DataBind();
-        }
+        //public void showAdmins()
+        //{
+        //    BLL.adminTb bllAdmin = new BLL.adminTb();
+        //    List<Model.adminTb> admins = bllAdmin.GetModelList("adminLevel=1");
+        //    this.gvSuperAdminSeeInfo.DataSource = admins;
+        //    this.gvSuperAdminSeeInfo.DataBind();
+        //}
 
         protected void gvSuperAdminSeeInfo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -79,24 +83,19 @@ namespace littleworld.Web
             try
             {
                 BLL.adminTb bllAdmin = new BLL.adminTb();
-                List<Model.adminTb> admins = bllAdmin.GetModelList("adminLevel=1 and adminPwd=" + searchT);
+                List<Model.adminTb> admins = bllAdmin.GetModelList("adminLevel=1 and adminName like %" + searchT + "%");
                 if (admins.Count == 0)
                 {
-                    //Response.Write("no");
                     ScriptManager.RegisterStartupScript(searchBtn, this.GetType(), "showNoticeAlert", "showNoticeAlert('没有您要找的管理员！');", true);
                     return;
                 }
-                this.gvSuperAdminSeeInfo.DataSource = admins;
-                this.gvSuperAdminSeeInfo.DataBind();
+                bindData(0, "adminLevel=1 and adminName like %" + searchT+"%");
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(searchBtn, this.GetType(), "showErrorAlert", "showErrorAlert('发生错误,请重新输入关键字！');", true);
                     
-            }
-           
-            
-            
+            }  
         }
     }
 }

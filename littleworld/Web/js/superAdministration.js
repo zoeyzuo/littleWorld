@@ -60,3 +60,17 @@ function showNoticeAlert(alertContent) {
     $(".addAdminAlertNotice").show();
     $(".addAdminAlertNotice .addAdminAlertInner").html(alertContent);
 }
+
+
+//点击分页的页数时,改变它的样式
+function clickPage(i) {
+    $(".pageA").css({ "background-image": "none", "color": "rgb(87, 160, 0)" });
+    $(".pageA" + i).css({ "background-image": 'url("../images/superAdminImg/bg-button-green.gif")', "color": "#fff" });
+}
+//菜单栏的变化
+function changeMenuSeeNovelty(nowTitle) {
+    $(".mainLeft3ATitle").removeClass("mainLeft3ATitleS");
+    $(nowTitle).addClass("mainLeft3ATitleS");
+    $(".mainLeft3ATitle").next(".mainLeft3UlContent").hide();
+    $(nowTitle).next(".mainLeft3UlContent").slideDown();
+}

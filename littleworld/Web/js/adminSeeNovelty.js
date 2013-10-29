@@ -3,14 +3,33 @@
 });
 function initEvents() {
     //菜单栏的变化
-    changeMenuSeeNovelty();
-    
-
+    changeMenuSeeNovelty(".mainLeft3ATitle3");
+    //修改mainTitle中的内容
+    $(".mainCTitle").html("&nbsp;&nbsp;查看新鲜事");
+    //删除管理员功能,就是将它的状态改为0
+    deleteNovelty();
 }
-//菜单栏的变化
-function changeMenuSeeNovelty() {
-    $(".mainLeft3ATitle").removeClass("mainLeft3ATitleS");
-    $(".mainLeft3ATitle3").addClass("mainLeft3ATitleS");
-    $(".mainLeft3ATitle").next(".mainLeft3UlContent").slideUp();
-    $(".mainLeft3ATitle3").next(".mainLeft3UlContent").slideDown();
+function deleteNovelty() {
+    $(".gvSuperAdminSeeInfoHeaderA").click(function () {
+        var noveltyIDd = parseInt($(this).attr("thisNoveltyID"));
+        var indexCH = confirm("您确定要屏蔽该新鲜事吗？");
+        if (indexCH == true) {
+            $.ajax({
+                url: "ws/adminSeeNovelty.asmx/deleteNoveltyAsmx",
+                type: "POST",
+                contentType: "application/json",
+                data: "{noveltyid:" + noveltyIDd + "}",
+                dataType: "json",
+                success: function () {
+                    //showSuccessAlert("您成功屏蔽新鲜事" + adminName + "！");
+                    //setTimeout(function () {
+                        location.reload();
+                    //}, 2000);  
+                }        
+            });
+        }
+        else {
+            showNoticeAlert("您取消了屏蔽该新鲜事！");
+        }
+    });
 }

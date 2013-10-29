@@ -21,14 +21,12 @@ function deleteAdministration(){
                 data: "{adminid:" + adminID + "}",
                 dataType: "json",
                 success: function () {
-                    
+                    showSuccessAlert("您成功删除管理员" + adminName + "！");
                     setTimeout(function () {
                         location.reload();
-                    }, 2000);
-                    showSuccessAlert("您成功删除管理员" + adminName + "！");
+                    }, 2000);   
                 }
             });
-            
         }
         else {
             showNoticeAlert("您取消了删除管理员" + adminName + "！");
@@ -39,31 +37,21 @@ function deleteAdministration(){
 
 //搜索框自动搜索功能，引用jQuery ui
 function tags() {
-    var availableTags = [
-	"ActionScript",
-	"AppleScript",
-	"Asp",
-	"BASIC",
-	"C",
-	"C++",
-	"Clojure",
-	"COBOL",
-	"ColdFusion",
-	"Erlang",
-	"Fortran",
-	"Groovy",
-	"Haskell",
-	"Java",
-	"JavaScript",
-	"Lisp",
-	"Perl",
-	"PHP",
-	"Python",
-	"Ruby",
-	"Scala",
-	"Scheme"
-	];
-    $("#tags").autocomplete({
+    var availableTags =[];
+    $.ajax({
+        url: "ws/superSeeAdminInfo.asmx/selectAdminName",
+        type: "POST",
+        contentType: "application/json",
+        date: {},
+        dataType: "json",
+        success: function (res) {
+            $(res.d).each(function () {
+                //alert(this["adminName"]);
+                availableTags.push(this["adminName"]);
+            });
+        }
+    });
+    $(".Searchtags").autocomplete({
         source: availableTags
     });
 }
